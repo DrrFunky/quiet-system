@@ -12,7 +12,8 @@ Proyecto desarrollado para el curso de Robótica.
 - [Instalación y configuración](#instalación-y-configuración)
 - [Dashboard](#dashboard)
 - [Posibles mejoras futuras](#posibles-mejoras-futuras)
-
+- [Colaboradores](#colaboradores)
+- 
 ## Cómo funciona
 
 1. El ESP32 muestrea continuamente el sensor KY-037 y calcula la amplitud del sonido ambiental (con un filtro de suavizado exponencial).
@@ -81,6 +82,17 @@ El panel incluye:
 - Gráfico en tiempo real del nivel de ruido, con líneas de referencia para los umbrales configurados.
 - Botón para reiniciar el dispositivo de forma remota.
 - Botón de descarga del historial de alertas en `.txt`, con nombre de archivo generado automáticamente según la fecha.
+
+## Colaboradores
+
+Agradecimientos a las personas que formaron parte de este proyecto:
+
+| Foto | Usuario |
+|:---:|:---:|
+| <img src="https://github.com/Ariel1224L.png" width="50px;"/> | [@Ariel1224L](https://github.com/Ariel1224L) |
+| <img src="https://github.com/Kuzubo2721.png" width="50px;"/> | [@Kuzubo2721](https://github.com/Kuzubo2721) |
+| <img src="https://github.com/DrrFunky.png" width="50px;"/> | [@DrrFunky](https://github.com/DrrFunky) |
+| <img src="https://github.com/ElForceSG.png" width="50px;"/> | [@ElForceSG](https://github.com/ElForceSG) |
 
 ## Posibles mejoras futuras
 
