@@ -90,7 +90,7 @@ Agradecimientos a las personas que formaron parte de este proyecto:
 | Foto | Usuario |
 |:---:|:---:|
 | <img src="https://github.com/Ariel1224L.png" width="50px;"/> | [@Ariel1224L](https://github.com/Ariel1224L) |
-| <img src="https://github.com/Kuzubo2721.png" width="50px;"/> | [@Kuzubo2721](https://github.com/Kuzubo2721) |
+| <img src="https://github.com/Kuzub0.png" width="50px;"/> | [@Kuzub0](https://github.com/Kuzub0) |
 | <img src="https://github.com/DrrFunky.png" width="50px;"/> | [@DrrFunky](https://github.com/DrrFunky) |
 | <img src="https://github.com/ElForceSG.png" width="50px;"/> | [@ElForceSG](https://github.com/ElForceSG) |
 
