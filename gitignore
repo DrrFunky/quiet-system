@@ -1,0 +1,14 @@
+# Credenciales locales - NUNCA subir
+config.h
+
+# Archivos de build / IDE
+.pio/
+.vscode/
+build/
+*.o
+*.elf
+*.bin
+
+# Sistema
+.DS_Store
+Thumbs.db

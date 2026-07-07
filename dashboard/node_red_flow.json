@@ -1,0 +1,621 @@
+[
+    {
+        "id": "f276df6ad4972603",
+        "type": "tab",
+        "label": "Monitoreo Sonoro Automatizado",
+        "disabled": false,
+        "info": "Flujo principal para la gestión, visualización y auditoría de alertas de ruido ambiental con calibración dinámica desde ESP32.",
+        "env": []
+    },
+    {
+        "id": "cba70ff352cbbd67",
+        "type": "mqtt in",
+        "z": "f276df6ad4972603",
+        "name": "Sub: Inicio Estado Rojo",
+        "topic": "quiteSystem/monitorRuido/inicioEstadoRojo",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "6b50114431b94fb6",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 100,
+        "y": 140,
+        "wires": [
+            [
+                "b8b5a77e06c89f96",
+                "ac6465c501753315",
+                "66f373bb47694b79"
+            ]
+        ]
+    },
+    {
+        "id": "f04f8d759fb30973",
+        "type": "mqtt in",
+        "z": "f276df6ad4972603",
+        "name": "Sub: Término Estado Rojo",
+        "topic": "quiteSystem/monitorRuido/terminoEstadoRojo",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "6b50114431b94fb6",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 220,
+        "wires": [
+            [
+                "71daafec42991b66",
+                "46d419f83597046f",
+                "66f373bb47694b79"
+            ]
+        ]
+    },
+    {
+        "id": "8ebd98d819099d12",
+        "type": "mqtt in",
+        "z": "f276df6ad4972603",
+        "name": "Sub: Telemetría Micrófono KY-037",
+        "topic": "quiteSystem/monitorRuido/valorSensor",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "6b50114431b94fb6",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 380,
+        "wires": [
+            [
+                "afb21eaf474e38f3"
+            ]
+        ]
+    },
+    {
+        "id": "4fe3ee4362c1b334",
+        "type": "mqtt in",
+        "z": "f276df6ad4972603",
+        "name": "Sub: Configuración Umbrales",
+        "topic": "quiteSystem/monitorRuido/configuracionGrafico",
+        "qos": "0",
+        "datatype": "utf8",
+        "broker": "6b50114431b94fb6",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 460,
+        "wires": [
+            [
+                "76d47a2c781dd889"
+            ]
+        ]
+    },
+    {
+        "id": "a2a02261a46ae3fd",
+        "type": "mqtt out",
+        "z": "f276df6ad4972603",
+        "name": "Pub: Comando Reinicio",
+        "topic": "quiteSystem/monitorRuido/reinicio",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "6b50114431b94fb6",
+        "x": 710,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "4197c71c1e08c0d2",
+        "type": "ui-button",
+        "z": "f276df6ad4972603",
+        "group": "08191e22b8b7f922",
+        "name": "Dashboard: Botón Reinicio",
+        "label": "Reiniciar dispositivo",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "color": "#ffffff",
+        "className": "",
+        "icon": "fa-refresh",
+        "iconPosition": "left",
+        "payload": "Alerta Remota",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 440,
+        "y": 320,
+        "wires": [
+            [
+                "a2a02261a46ae3fd"
+            ]
+        ]
+    },
+    {
+        "id": "6749eb40e8cb6488",
+        "type": "ui-chart",
+        "z": "f276df6ad4972603",
+        "group": "08191e22b8b7f922",
+        "name": "Dashboard: Gráfico de Alertas",
+        "label": "Historial de Alertas (Estado Rojo)",
+        "order": 2,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "Tiempo",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "HH:mm:ss",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "Amplitud Sonido",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": "",
+        "stackSeries": false,
+        "pointRadius": "",
+        "showLegend": true,
+        "removeOlder": "15",
+        "removeOlderUnit": "1",
+        "removeOlderPoints": "",
+        "colors": [
+            "#1f77b4",
+            "#f7ef08",
+            "#ff0f0f",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": "6",
+        "height": "6",
+        "className": "",
+        "interpolation": "linear",
+        "x": 1010,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ac6465c501753315",
+        "type": "function",
+        "z": "f276df6ad4972603",
+        "name": "Set: Estado Activo (1)",
+        "func": "msg.payload = 1;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 140,
+        "wires": [
+            [
+                "bb6c5ea2f488ec6c"
+            ]
+        ]
+    },
+    {
+        "id": "46d419f83597046f",
+        "type": "function",
+        "z": "f276df6ad4972603",
+        "name": "Set: Estado Inactivo (0)",
+        "func": "msg.payload = 0;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 220,
+        "wires": [
+            [
+                "bb6c5ea2f488ec6c"
+            ]
+        ]
+    },
+    {
+        "id": "afb21eaf474e38f3",
+        "type": "function",
+        "z": "f276df6ad4972603",
+        "name": "Format: Parsear a Numérico",
+        "func": "msg.topic = \"Lectura Sensor\";\nmsg.payload = Number(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 380,
+        "wires": [
+            [
+                "37bd8f4cd2d48d52"
+            ]
+        ]
+    },
+    {
+        "id": "37bd8f4cd2d48d52",
+        "type": "function",
+        "z": "f276df6ad4972603",
+        "name": "Gen: Capas de Líneas Horizontales",
+        "func": "let valor = msg.payload;\n\nif (valor === \"Termino de Estado Rojo\") {\n    valor = 0;\n} else if (typeof valor === \"string\" && valor.startsWith(\"Inicio Estado Rojo\")) {\n    let maxS = global.get(\"limiteSilencio\") || 111;\n    valor = maxS;\n} else {\n    valor = Number(valor);\n}\n\nlet msgVolumen = { topic: \"Volumen del Sensor\", payload: valor };\n\nlet limiteP = global.get(\"limitePrecaucion\") || 35;\nlet limiteS = global.get(\"limiteSilencio\") || 111;\n\nlet msgPrecaucion = { topic: \"Límite Precaución\", payload: limiteP };\nlet msgRojo = { topic: \"Límite Silencio\", payload: limiteS };\n\nreturn [[msgVolumen, msgPrecaucion, msgRojo]];",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 180,
+        "wires": [
+            [
+                "6749eb40e8cb6488"
+            ]
+        ]
+    },
+    {
+        "id": "bb6c5ea2f488ec6c",
+        "type": "function",
+        "z": "f276df6ad4972603",
+        "name": "Gen: Bloques de Alerta Máxima",
+        "func": "msg.topic = \"¡ALERTA ROJA!\";\n\nif (msg.payload === \"Termino de Estado Rojo\") {\n    msg.payload = 0;\n} else {\n    let limiteS = global.get(\"limiteSilencio\") || 111;\n    msg.payload = limiteS + 50;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 180,
+        "wires": [
+            [
+                "37bd8f4cd2d48d52"
+            ]
+        ]
+    },
+    {
+        "id": "76d47a2c781dd889",
+        "type": "function",
+        "z": "f276df6ad4972603",
+        "name": "Config: Almacenar Líneas Dinámicas",
+        "func": "let partes = msg.payload.split(\",\");\n\nif (partes.length === 2) {\n    let limiteP = Number(partes[0]);\n    let limiteS = Number(partes[1]);\n    \n    global.set(\"limitePrecaucion\", limiteP);\n    global.set(\"limiteSilencio\", limiteS);\n    \n    let graficoMaximo = limiteS + 50;\n    \n    msg.ui_update = {\n        chartOptions: {\n            yAxis: {\n                min: 0,\n                max: graficoMaximo,\n                interval: Math.ceil(graficoMaximo / 6)\n            }\n        }\n    };\n    \n    msg.topic = \"¡ALERTA ROJA!\";\n    msg.payload = 0;\n    \n    return msg;\n}\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 460,
+        "wires": [
+            [
+                "6749eb40e8cb6488"
+            ]
+        ]
+    },
+    {
+        "id": "66f373bb47694b79",
+        "type": "function",
+        "z": "f276df6ad4972603",
+        "name": "Format: Línea de Log",
+        "func": "let ahora = new Date();\nlet fechaCompleta = ahora.toLocaleString(\"es-CL\"); \nlet diaActual = ahora.toLocaleDateString(\"es-CL\");\n\n// Consultamos si el día actual es distinto al último que registramos\nlet ultimoDiaGuardado = global.get(\"diaActualLog\");\nlet separador = \"\";\n\nif (ultimoDiaGuardado !== diaActual) {\n    separador = `\\n========================================\\n           ALERTAS DEL ${diaActual}\\n========================================\\n`;\n    // Guardamos el nuevo día para que no vuelva a poner el separador hasta mañana\n    global.set(\"diaActualLog\", diaActual);\n}\n\nlet mensajeRecibido = msg.payload;\nlet lineaLog = \"\";\n\nif (mensajeRecibido === \"Termino de Estado Rojo\") {\n    lineaLog = `${separador}[${fechaCompleta}] ✅ FIN: El nivel de ruido ha regresado a la normalidad.\\n`;\n} else {\n    lineaLog = `${separador}[${fechaCompleta}] 🚨 INICIO: ${mensajeRecibido}\\n`;\n}\n\nmsg.payload = lineaLog;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 620,
+        "wires": [
+            [
+                "fa399db8ea81cd95"
+            ]
+        ]
+    },
+    {
+        "id": "fa399db8ea81cd95",
+        "type": "file",
+        "z": "f276df6ad4972603",
+        "name": "Storage: Escribir Fila LOG",
+        "filename": "log_alertas_ruido.txt",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "utf8",
+        "x": 710,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b8b5a77e06c89f96",
+        "type": "debug",
+        "z": "f276df6ad4972603",
+        "name": "Debug: Log Inicio Alerta",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 430,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "71daafec42991b66",
+        "type": "debug",
+        "z": "f276df6ad4972603",
+        "name": "Debug: Log Fin Alerta",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "30bf35b7d5822da3",
+        "type": "http in",
+        "z": "f276df6ad4972603",
+        "name": "",
+        "url": "/descarga-historial",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 560,
+        "wires": [
+            [
+                "4612b255c2fcd378"
+            ]
+        ]
+    },
+    {
+        "id": "4612b255c2fcd378",
+        "type": "file in",
+        "z": "f276df6ad4972603",
+        "name": "",
+        "filename": "log_alertas_ruido.txt",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 450,
+        "y": 560,
+        "wires": [
+            [
+                "0e2ee6dfb24d7307"
+            ]
+        ]
+    },
+    {
+        "id": "0e2ee6dfb24d7307",
+        "type": "function",
+        "z": "f276df6ad4972603",
+        "name": "function 1",
+        "func": "let hoy = new Date();\n// Formatea la fecha al estilo chileno (DD/MM/YYYY) y cambia las barras por guiones para que sea un nombre de archivo válido\nlet fechaStr = hoy.toLocaleDateString(\"es-CL\").replace(/\\//g, \"-\");\n\nmsg.headers = {\n    \"Content-Type\": \"text/plain\",\n    \"Content-Disposition\": `attachment; filename=historial_ruido_${fechaStr}.txt`\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 560,
+        "wires": [
+            [
+                "51ed68e010f61b94"
+            ]
+        ]
+    },
+    {
+        "id": "51ed68e010f61b94",
+        "type": "http response",
+        "z": "f276df6ad4972603",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 890,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "6c465d992f524442",
+        "type": "ui-template",
+        "z": "f276df6ad4972603",
+        "group": "08191e22b8b7f922",
+        "page": "",
+        "ui": "",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<div style=\"padding: 10px; width: 100%; box-sizing: border-box;\">\n    <a href=\"/descarga-historial\" target=\"_blank\" style=\"background-color: #28a745; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; display: block; text-align: center; font-family: Roboto, sans-serif; font-weight: bold; box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12); cursor: pointer;\">\n        📥 Descargar Historial de Alertas (.txt)\n    </a>\n</div>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 160,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6b50114431b94fb6",
+        "type": "mqtt-broker",
+        "name": "Broker EMQX Public",
+        "broker": "broker.emqx.io",
+        "port": "1883",
+        "clientid": "NodeRED_MonitorRuido",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "08191e22b8b7f922",
+        "type": "ui-group",
+        "name": "Panel de Control de Ruido",
+        "page": "73063e22fe22f133",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "73063e22fe22f133",
+        "type": "ui-page",
+        "name": "Monitor de Alertas Sonoras",
+        "ui": "c3d50948e95d1d70",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "48189f637a8f9202",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": 0,
+                "cols": 3
+            },
+            {
+                "name": "Tablet",
+                "px": 576,
+                "cols": 6
+            },
+            {
+                "name": "Small Desktop",
+                "px": 768,
+                "cols": 9
+            },
+            {
+                "name": "Desktop",
+                "px": 1024,
+                "cols": 12
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": true,
+        "disabled": false
+    },
+    {
+        "id": "c3d50948e95d1d70",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "48189f637a8f9202",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "4163b19b1e88a1c9",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "@flowfuse/node-red-dashboard": "1.30.2"
+        }
+    }
+]
