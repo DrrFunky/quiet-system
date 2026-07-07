@@ -66,7 +66,6 @@ monitor-ruido-esp32/
    #define WIFI_SSID_CONFIG     "tu_red_wifi"
    #define WIFI_PASSWORD_CONFIG "tu_contraseña"
    ```
-   > ⚠️ `config.h` no debe subirse a GitHub (está incluido en `.gitignore`), ya que contiene tus credenciales.
 3. Conecta el hardware según los pines definidos en `main.cpp` (LEDs en 25/26/27, sensor en el pin 32).
 4. Compila y sube el código al ESP32.
 
