@@ -13,7 +13,7 @@ Proyecto desarrollado para el curso de Robótica.
 - [Dashboard](#dashboard)
 - [Posibles mejoras futuras](#posibles-mejoras-futuras)
 - [Colaboradores](#colaboradores)
-- 
+
 ## Cómo funciona
 
 1. El ESP32 muestrea continuamente el sensor KY-037 y calcula la amplitud del sonido ambiental (con un filtro de suavizado exponencial).
